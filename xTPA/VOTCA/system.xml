@@ -1,0 +1,122 @@
+<topology>
+	<molecules>
+		<molecule>
+			<name>xtpa</name>
+			<mdname>molecule0</mdname>
+			<segments>
+				<segment>
+					<name>XTA</name>
+					<qmcoords>QC_FILES/xtpa_n.xyz</qmcoords>
+					<orbitals>QC_FILES/xtpa.orb</orbitals>
+					<basisset>INDO</basisset>
+					<torbital_h>140</torbital_h>
+					<U_cC_nN_h>0.0650</U_cC_nN_h>
+					<U_nC_nN_h>0.0650</U_nC_nN_h>
+					<U_cN_cC_h>0.0000</U_cN_cC_h>
+					<torbital_e>141</torbital_e>
+					<U_cC_nN_e>0.0000</U_cC_nN_e>
+					<U_nC_nN_e>0.0000</U_nC_nN_e>
+					<U_cN_cC_e>0.0000</U_cN_cC_e>
+					<multipoles_n>MP_FILES/xtpa_n_ddec6.mps</multipoles_n>
+					<multipoles_h>MP_FILES/xtpa_h_ddec6.mps</multipoles_h>
+					<multipoles_e>MP_FILES/xtpa_e_polar.mps</multipoles_e>
+					<map2md>0</map2md>
+					<fragments>
+						<fragment>
+							<name>XTA</name>
+							<mdatoms>   1:XTA:NT    1:XTA:CN1     1:XTA:C1     1:XTA:C2     1:XTA:C3     1:XTA:C4     1:XTA:C5    1:XTA:CN2     1:XTA:C6     1:XTA:C7     1:XTA:C8     1:XTA:C9    1:XTA:C10    1:XTA:CN3    1:XTA:C11    1:XTA:C12    1:XTA:C13    1:XTA:C14    1:XTA:C15     1:XTA:H1     1:XTA:H2     1:XTA:H3     1:XTA:H4     1:XTA:H5     1:XTA:H6     1:XTA:H7     1:XTA:H8     1:XTA:H9    1:XTA:H10    1:XTA:H11    1:XTA:H12    1:XTA:OA1    1:XTA:CO1    1:XTA:OA2    1:XTA:CO2    1:XTA:CL1    1:XTA:CL2    1:XTA:CL3    1:XTA:CL4    1:XTA:CO3    1:XTA:OA3    1:XTA:CO4    1:XTA:CT1    1:XTA:CL5    1:XTA:CL6    1:XTA:OA4    1:XTA:CO5    1:XTA:CL7    1:XTA:CL8    1:XTA:CL9    1:XTA:CL10   1:XTA:CO6    1:XTA:OA5    1:XTA:CO7    1:XTA:CT2    1:XTA:CL11   1:XTA:CL12   1:XTA:HL1    1:XTA:HL2    1:XTA:HL3    1:XTA:HL4    1:XTA:HL5    1:XTA:HL6    1:XTA:HL7    1:XTA:HL8    1:XTA:HL9    1:XTA:HL10   1:XTA:HL11   1:XTA:HL12   1:XTA:HL13   1:XTA:HL14   1:XTA:HL15   1:XTA:HL16   1:XTA:HL17   1:XTA:HL18   1:XTA:HL19   1:XTA:HL20   1:XTA:HL21   1:XTA:HL22   1:XTA:HL23   1:XTA:HL24   1:XTA:HL25   1:XTA:HL26   1:XTA:HL27   1:XTA:HL28   1:XTA:HL29   1:XTA:HL30   1:XTA:HL31   1:XTA:HL32   1:XTA:HL33   1:XTA:HL34   1:XTA:HL35   1:XTA:HL36   1:XTA:HL37   1:XTA:HL38   1:XTA:HL39   1:XTA:HL40   1:XTA:HL41   1:XTA:CO8    1:XTA:CO9    1:XTA:OA6    1:XTA:HL42   1:XTA:HL43   1:XTA:HL44   1:XTA:HL45   1:XTA:CO10   1:XTA:CO11   1:XTA:OA7    1:XTA:HL46   1:XTA:HL47   1:XTA:HL48   1:XTA:HL49 </mdatoms>
+							
+							<qmatoms>     1:N          2:C          3:C          4:C          5:C          6:C          7:C          8:C          9:C         10:C         11:C         12:C         13:C         14:C         15:C         16:C         17:C         18:C         19:C         20:H         21:H         22:H         23:H         24:H         25:H         26:H         27:H         28:H         29:H         30:H         31:H         32:O         33:C         34:O         35:C         36:C         37:C         38:C         39:C         40:C         41:O         42:C         43:C         44:C         45:C         46:O         47:C         48:C         49:C         50:C         51:C         52:C         53:O         54:C         55:C         56:C         57:C         58:H         59:H         60:H         61:H         62:H         63:H         64:H         65:H         66:H         67:H         68:H         69:H         70:H         71:H         72:H         73:H         74:H         75:H         76:H         77:H         78:H         79:H         80:H         81:H         82:H         83:H         84:H         85:H         86:H         87:H         88:H         89:H         90:H         91:H         92:H         93:H         94:H         95:H         96:H         97:H         98:H         99:C         100:C        101:O        102:H        103:H        104:H        105:H        106:C        107:C        108:O        109:H        110:H        111:H        112:H    </qmatoms>
+							<mpoles>      1:N          2:C          3:C          4:C          5:C          6:C          7:C          8:C          9:C         10:C         11:C         12:C         13:C         14:C         15:C         16:C         17:C         18:C         19:C         20:H         21:H         22:H         23:H         24:H         25:H         26:H         27:H         28:H         29:H         30:H         31:H         32:O         33:C         34:O         35:C         36:C         37:C         38:C         39:C         40:C         41:O         42:C         43:C         44:C         45:C         46:O         47:C         48:C         49:C         50:C         51:C         52:C         53:O         54:C         55:C         56:C         57:C         58:H         59:H         60:H         61:H         62:H         63:H         64:H         65:H         66:H         67:H         68:H         69:H         70:H         71:H         72:H         73:H         74:H         75:H         76:H         77:H         78:H         79:H         80:H         81:H         82:H         83:H         84:H         85:H         86:H         87:H         88:H         89:H         90:H         91:H         92:H         93:H         94:H         95:H         96:H         97:H         98:H         99:C         100:C        101:O        102:H        103:H        104:H        105:H        106:C        107:C        108:O        109:H        110:H        111:H        112:H    </mpoles>
+							<weights>      14           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           1            1            1            1            1            1            1            1            1            1            1            1            16           12           16           12           12           12           12           12           12           16           12           12           12           12           16           12           12           12           12           12           12           16           12           12           12           12           1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            12           12           16           1            1            1            1            12           12           16           1            1            1            1      </weights>
+
+
+							<localframe>  1    2    3  </localframe>
+						</fragment>
+					</fragments>
+				</segment>
+
+			</segments>
+		</molecule>
+
+
+		<molecule>
+			<name>xtpa_h</name>
+			<mdname>molecule2</mdname>
+			<segments>
+				<segment>
+					<name>XTH</name>
+					<qmcoords>QC_FILES/xtpa_n.xyz</qmcoords>
+					<orbitals>QC_FILES/xtpa.orb</orbitals>
+					<basisset>INDO</basisset>
+					<torbital_h>140</torbital_h>
+					<U_cC_nN_h>0.0650</U_cC_nN_h>
+					<U_nC_nN_h>0.0650</U_nC_nN_h>
+					<U_cN_cC_h>0.0000</U_cN_cC_h>
+					<torbital_e>141</torbital_e>
+					<U_cC_nN_e>0.0000</U_cC_nN_e>
+					<U_nC_nN_e>0.0000</U_nC_nN_e>
+					<U_cN_cC_e>0.0000</U_cN_cC_e>
+					<multipoles_n>MP_FILES/xtpa_h_n_ddec6.mps</multipoles_n>
+					<multipoles_h>MP_FILES/xtpa_h_ddec6.mps</multipoles_h>
+					<multipoles_e>MP_FILES/xtpa_n_ddec6.mps</multipoles_e>
+					<map2md>0</map2md>
+					<fragments>
+						<fragment>
+							<name>XTH</name>
+
+							<mdatoms>   1:XTH:NT    1:XTH:CN1     1:XTH:C1     1:XTH:C2     1:XTH:C3     1:XTH:C4     1:XTH:C5    1:XTH:CN2     1:XTH:C6     1:XTH:C7     1:XTH:C8     1:XTH:C9    1:XTH:C10    1:XTH:CN3    1:XTH:C11    1:XTH:C12    1:XTH:C13    1:XTH:C14    1:XTH:C15     1:XTH:H1     1:XTH:H2     1:XTH:H3     1:XTH:H4     1:XTH:H5     1:XTH:H6     1:XTH:H7     1:XTH:H8     1:XTH:H9    1:XTH:H10    1:XTH:H11    1:XTH:H12    1:XTH:OA1    1:XTH:CO1    1:XTH:OA2    1:XTH:CO2    1:XTH:CL1    1:XTH:CL2    1:XTH:CL3    1:XTH:CL4    1:XTH:CO3    1:XTH:OA3    1:XTH:CO4    1:XTH:CT1    1:XTH:CL5    1:XTH:CL6    1:XTH:OA4    1:XTH:CO5    1:XTH:CL7    1:XTH:CL8    1:XTH:CL9    1:XTH:CL10   1:XTH:CO6    1:XTH:OA5    1:XTH:CO7    1:XTH:CT2    1:XTH:CL11   1:XTH:CL12   1:XTH:HL1    1:XTH:HL2    1:XTH:HL3    1:XTH:HL4    1:XTH:HL5    1:XTH:HL6    1:XTH:HL7    1:XTH:HL8    1:XTH:HL9    1:XTH:HL10   1:XTH:HL11   1:XTH:HL12   1:XTH:HL13   1:XTH:HL14   1:XTH:HL15   1:XTH:HL16   1:XTH:HL17   1:XTH:HL18   1:XTH:HL19   1:XTH:HL20   1:XTH:HL21   1:XTH:HL22   1:XTH:HL23   1:XTH:HL24   1:XTH:HL25   1:XTH:HL26   1:XTH:HL27   1:XTH:HL28   1:XTH:HL29   1:XTH:HL30   1:XTH:HL31   1:XTH:HL32   1:XTH:HL33   1:XTH:HL34   1:XTH:HL35   1:XTH:HL36   1:XTH:HL37   1:XTH:HL38   1:XTH:HL39   1:XTH:HL40   1:XTH:HL41   1:XTH:CO8    1:XTH:CO9    1:XTH:OA6    1:XTH:HL42   1:XTH:HL43   1:XTH:HL44   1:XTH:HL45   1:XTH:CO10   1:XTH:CO11   1:XTH:OA7    1:XTH:HL46   1:XTH:HL47   1:XTH:HL48   1:XTH:HL49 </mdatoms>
+							
+							<qmatoms>     1:N          2:C          3:C          4:C          5:C          6:C          7:C          8:C          9:C         10:C         11:C         12:C         13:C         14:C         15:C         16:C         17:C         18:C         19:C         20:H         21:H         22:H         23:H         24:H         25:H         26:H         27:H         28:H         29:H         30:H         31:H         32:O         33:C         34:O         35:C         36:C         37:C         38:C         39:C         40:C         41:O         42:C         43:C         44:C         45:C         46:O         47:C         48:C         49:C         50:C         51:C         52:C         53:O         54:C         55:C         56:C         57:C         58:H         59:H         60:H         61:H         62:H         63:H         64:H         65:H         66:H         67:H         68:H         69:H         70:H         71:H         72:H         73:H         74:H         75:H         76:H         77:H         78:H         79:H         80:H         81:H         82:H         83:H         84:H         85:H         86:H         87:H         88:H         89:H         90:H         91:H         92:H         93:H         94:H         95:H         96:H         97:H         98:H         99:C         100:C        101:O        102:H        103:H        104:H        105:H        106:C        107:C        108:O        109:H        110:H        111:H        112:H    </qmatoms>
+							<mpoles>      1:N          2:C          3:C          4:C          5:C          6:C          7:C          8:C          9:C         10:C         11:C         12:C         13:C         14:C         15:C         16:C         17:C         18:C         19:C         20:H         21:H         22:H         23:H         24:H         25:H         26:H         27:H         28:H         29:H         30:H         31:H         32:O         33:C         34:O         35:C         36:C         37:C         38:C         39:C         40:C         41:O         42:C         43:C         44:C         45:C         46:O         47:C         48:C         49:C         50:C         51:C         52:C         53:O         54:C         55:C         56:C         57:C         58:H         59:H         60:H         61:H         62:H         63:H         64:H         65:H         66:H         67:H         68:H         69:H         70:H         71:H         72:H         73:H         74:H         75:H         76:H         77:H         78:H         79:H         80:H         81:H         82:H         83:H         84:H         85:H         86:H         87:H         88:H         89:H         90:H         91:H         92:H         93:H         94:H         95:H         96:H         97:H         98:H         99:C         100:C        101:O        102:H        103:H        104:H        105:H        106:C        107:C        108:O        109:H        110:H        111:H        112:H    </mpoles>
+							<weights>      14           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           12           1            1            1            1            1            1            1            1            1            1            1            1            16           12           16           12           12           12           12           12           12           16           12           12           12           12           16           12           12           12           12           12           12           16           12           12           12           12           1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            1            12           12           16           1            1            1            1            12           12           16           1            1            1            1      </weights>
+
+
+
+							<localframe>  1    2    3  </localframe>
+						</fragment>
+					</fragments>
+				</segment>
+
+			</segments>
+		</molecule>
+
+
+
+		<molecule>
+			<name>pf6</name>
+			<mdname>molecule1</mdname>
+			<segments>
+				<segment>
+					<name>PF6</name>
+					<qmcoords>QC_FILES/pf6_n.xyz</qmcoords>
+					<orbitals>QC_FILES/pf6.orb</orbitals>
+					<basisset>INDO</basisset>
+					<torbital_h>24</torbital_h>
+					<U_cC_nN_h>0.0000</U_cC_nN_h>
+					<U_nC_nN_h>0.0000</U_nC_nN_h>
+					<U_cN_cC_h>0.0000</U_cN_cC_h>
+					<torbital_e>25</torbital_e>
+					<U_cC_nN_e>0.0000</U_cC_nN_e>
+					<U_nC_nN_e>0.0000</U_nC_nN_e>
+					<U_cN_cC_e>0.0000</U_cN_cC_e>
+					<multipoles_n>MP_FILES/pf6_n_polar.mps</multipoles_n>
+					<multipoles_h>MP_FILES/pf6_h_polar.mps</multipoles_h>
+					<multipoles_e>MP_FILES/pf6_e_polar.mps</multipoles_e>
+					<map2md>0</map2md>
+					<fragments>
+						<fragment>
+							<name>PF6</name> <!-- ZINDO not parametrized for P, use N since we don't want the coupling or rate of PF6 anyways -->
+							<mdatoms>   1:PF6:PT    1:PF6:F1     1:PF6:F2     1:PF6:F3     1:PF6:F4     1:PF6:F5     1:PF6:F6  </mdatoms>										 <qmatoms>     1:N          2:F          3:F          4:F          5:F          6:F          7:F    </qmatoms>
+							<mpoles>      1:N          2:F          3:F          4:F          5:F          6:F          7:F    </mpoles>
+							<weights>      14           19           19           19           19           19           19    </weights>
+
+							<localframe>  1    2    3  </localframe>
+						</fragment>
+					</fragments>
+				</segment>
+
+			</segments>
+		</molecule>
+	</molecules>
+</topology>

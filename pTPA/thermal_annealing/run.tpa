@@ -1,0 +1,260 @@
+
+
+# ----------------- Init Section -----------------
+
+include "system.in.init"
+
+
+# ----------------- Atom Definition Section -----------------
+
+read_data "system.data"  extra/bond/per/atom 50 extra/angle/per/atom 50 extra/dihedral/per/atom 50 extra/improper/per/atom 50 extra/special/per/atom 50 
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+
+group xtpa type 1:11
+
+# ----------------- Run Section -----------------
+
+
+# Minimization
+
+dump mydmp all custom 100 dump.eq.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1
+
+minimize 1.0e-4 1.0e-6 100 1000
+
+undump mydmp
+reset_timestep 0
+
+# High Pressure NPT to contract the box
+
+timestep 1.0
+
+fix mynpt all npt temp 300.0 300.0 100.0 iso 100.0 100.0 1000.0 drag 1.0
+
+dump mydmp all custom 1000 dump.npt300_hP1.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+
+run 100000
+write_data xtpa_npt300_HighP1.data
+
+unfix mynpt
+undump mydmp
+
+fix mynpt all npt temp 300.0 300.0 100.0 iso 1.0 1.0 1000.0 drag 1.0
+
+dump mydmp all custom 1000 dump.npt300_hP2.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+
+run 100000
+write_data xtpa_npt300_HighP2.data
+
+unfix mynpt
+undump mydmp
+
+# NVT 1000
+
+timestep 1.0
+
+fix mynvt1 all nvt temp 1000.0 1000.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt1000.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000                                      
+
+run 125000
+write_data xtpa_nvt1000.data
+
+unfix mynvt1
+
+undump mydmp
+reset_timestep 0
+
+# NVT 900
+
+timestep 1.0
+
+fix mynvt2 all nvt temp 900.0 900.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt900.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt900.data
+
+unfix mynvt2
+
+undump mydmp
+reset_timestep 0
+
+# NVT 800
+
+timestep 1.0
+
+fix mynvt3 all nvt temp 800.0 800.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt800.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt800.data
+
+unfix mynvt3
+
+undump mydmp
+reset_timestep 0
+
+# NVT 700
+
+timestep 1.0
+
+fix mynvt4 all nvt temp 700.0 700.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt700.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt700.data
+
+unfix mynvt4
+
+undump mydmp
+reset_timestep 0
+
+# NVT 600
+
+timestep 1.0
+
+fix mynvt5 all nvt temp 600.0 600.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt600.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt600.data
+
+unfix mynvt5
+
+undump mydmp
+reset_timestep 0
+
+# NVT 500
+
+timestep 1.0
+
+fix mynvt6 all nvt temp 500.0 500.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt500.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt500.data
+
+unfix mynvt6
+
+undump mydmp
+reset_timestep 0
+
+# NVT 400
+
+timestep 1.0
+
+fix mynvt7 all nvt temp 400.0 400.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt400.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt400.data
+
+unfix mynvt7
+
+undump mydmp
+reset_timestep 0
+
+
+# NVT Room Temp
+
+
+timestep 1.0
+
+fix mynvt8 all nvt temp 300.0 300.0 100.0 tchain 1
+
+dump mydmp all custom 1000 dump.nvt300.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+thermo 1000
+
+run 125000
+write_data xtpa_nvt300.data
+
+unfix mynvt8
+
+undump mydmp
+reset_timestep 0
+
+# NPT Room Temp
+
+#read_data "xtpa_nvt2.data"
+
+timestep 1.0
+
+fix mynpt all npt temp 300.0 300.0 100.0 iso 1.0 1.0 1000.0 drag 0.0
+
+dump mydmp all custom 1000 dump.npt300.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H pbc yes sort 1 sort id
+
+# rdf during reaction
+compute myrdf all rdf 200 1 1 1 10  # cutoff 6.0 
+fix rdfs all ave/time 1 100000 100000 c_myrdf[*] file rdfs.dat mode vector
+
+group ct type 10
+# diffusivity -> msd of oxetane atom
+compute mymsd ct msd com yes # -> subtract com movement of group 
+fix msds ct ave/time 1 100000 100000 c_mymsd file msd_ct.dat mode vector
+
+group nt type 1
+# diffusivity -> msd of nt atom
+compute mymsd2 nt msd com yes # -> subtract com movement of group
+fix msds2 nt ave/time 1 100000 100000 c_mymsd2 file msd_nt.dat mode vector
+
+compute   myvacf nt vacf
+fix             vacfs nt vector 1 c_myvacf[4]
+variable        diff equal dt*trap(f_vacfs)
+
+compute   myvacf2 ct vacf
+fix             vacfs2 ct vector 1 c_myvacf2[4]
+variable        diff2 equal dt*trap(f_vacfs2)
+
+compute   myvacf3 nt vacf
+fix vacfs3 nt ave/correlate 1 100000 100000 c_myvacf3[4] file acf_nt.dat
+
+compute   myvacf4 ct vacf
+fix vacfs4 ct ave/correlate 1 100000 100000 c_myvacf4[4] file acf_ct.dat
+
+
+#density
+thermo 1000
+thermo_style custom step temp epair emol etotal press density vol bonds angles dihedrals impropers v_diff v_diff2
+
+
+
+
+run 1000000
+write_data xtpa_npt300.data
+
+write_restart xtpa_npt300_restart
+
+unfix mynpt
+
+

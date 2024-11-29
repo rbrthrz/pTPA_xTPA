@@ -1,0 +1,122 @@
+# ----------------- Init Section -----------------
+
+include "system.in.init"
+
+
+read_data "xtpa_xlinked_300.data"  extra/bond/per/atom 50 extra/angle/per/atom 50 extra/dihedral/per/atom 50 extra/improper/per/atom 50 extra/special/per/atom 50 
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+# ----------------- Atom Definition Section -----------------
+
+group xtpa type 1:12
+group xtpa_noh type 1:11 13 14
+
+# ----------------- Run Section -----------------
+
+
+dump mydmp all custom 1000 dump.eq.lammpstrj mol element xu yu zu
+dump_modify mydmp element  N C C H O C C C C C H H F P pbc yes sort 1 sort id
+thermo 1
+
+minimize 1.0e-4 1.0e-6 100 1000
+
+undump mydmp
+reset_timestep 0
+
+
+# NPT 300
+
+timestep 1.0
+
+fix mynpt4 all npt temp 300.0 300.0 100.0 iso 1.0 1.0 1000.0
+
+dump mydmp all custom 1000 dump.npt300.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H H F P pbc yes sort 1 sort id
+
+#density
+thermo 1000
+thermo_style custom step temp epair emol etotal press density vol
+
+
+run 50000
+write_data xtpa_npt300.data
+
+unfix mynpt4
+
+undump mydmp
+reset_timestep 0
+
+
+
+timestep 1.0
+
+dump mydmp all custom 10 dump.nvt.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H H F P pbc yes sort 1 sort id
+
+
+# rdf during reaction
+compute myrdf all rdf 150 1 1 1 10   # cutoff 6.0 
+fix rdfs all ave/time 1 100000 100000 c_myrdf[*] file rdfs.dat mode vector
+
+group ct type 10
+# diffusivity -> msd of oxetane atom
+compute mymsd ct msd com yes # -> subtract com movement of group 
+fix msds ct ave/time 1 100000 100000 c_mymsd file msd_ct.dat mode vector
+
+group nt type 1
+# diffusivity -> msd of nt atom
+compute mymsd2 nt msd com yes # -> subtract com movement of group
+fix msds2 nt ave/time 1 100000 100000 c_mymsd2 file msd_nt.dat mode vector
+
+
+compute   myvacf nt vacf
+fix             vacfs nt vector 1 c_myvacf[4]
+variable        diff equal dt*trap(f_vacfs)
+
+compute   myvacf2 ct vacf
+fix             vacfs2 ct vector 1 c_myvacf2[4]
+variable        diff2 equal dt*trap(f_vacfs2)
+
+compute   myvacf3 nt vacf
+fix vacfs3 nt ave/correlate 1 100000 100000  c_myvacf3[4] file acf_nt.dat
+
+compute   myvacf4 ct vacf
+fix vacfs4 ct ave/correlate 1 100000 100000 c_myvacf4[4] file acf_ct.dat
+
+
+#density
+thermo 1000
+thermo_style custom step temp epair emol etotal press density vol bonds angles dihedrals impropers v_diff v_diff2
+
+
+
+#timestep 1.0
+
+fix mynvt all nvt temp 300.0 300.0 500.0 tchain 1
+
+run 10000 
+
+write_data xlinked_tpa_pf6.data
+
+unfix mynvt
+undump mydmp
+unfix vacfs4
+unfix vacfs3
+unfix vacfs2
+unfix vacfs
+unfix msds2
+unfix msds
+unfix rdfs
+
+
+
+reset_timestep 0
+
+
+
+
+

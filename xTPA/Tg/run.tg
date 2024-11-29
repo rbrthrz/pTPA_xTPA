@@ -1,0 +1,53 @@
+# ----------------- Init Section -----------------
+
+include "system.in.init"
+
+
+read_data "xtpa_xlinked_300.data"  extra/bond/per/atom 50 extra/angle/per/atom 50 extra/dihedral/per/atom 50 extra/improper/per/atom 50 extra/special/per/atom 50 
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+# ----------------- Atom Definition Section -----------------
+
+group xtpa type 1:12
+
+# ----------------- Run Section -----------------
+
+
+
+dump mydmp all custom 1000 dump.eq.lammpstrj mol element xu yu zu
+dump_modify mydmp element  N C C H O C C C C C H H pbc yes sort 1 sort id
+thermo 1
+
+minimize 1.0e-4 1.0e-6 100 1000
+
+undump mydmp
+reset_timestep 0
+
+
+# NPT 300
+
+timestep 1.0
+
+fix mynpt4 all npt temp 800.0 1.0 100.0 iso 1.0 1.0 1000.0
+
+dump mydmp all custom 1000 dump.npt300.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H H pbc yes sort 1 sort id
+
+#density
+thermo 10000
+thermo_style custom step temp epair emol etotal press density vol
+
+
+run 10000000
+write_data xtpa_npt300.data
+
+unfix mynpt4
+
+undump mydmp
+reset_timestep 0
+
+

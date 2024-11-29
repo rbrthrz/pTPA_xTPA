@@ -1,0 +1,52 @@
+    pair_coeff 1 1 0.101 3.131
+    pair_coeff 2 2 0.062 3.515
+    pair_coeff 3 3 0.062 3.515
+    pair_coeff 4 4 0.036 2.266
+    pair_coeff 5 5 0.100 2.889
+    pair_coeff 6 6 0.062 3.471
+    pair_coeff 7 7 0.062 3.471
+    pair_coeff 8 8 0.062 3.471
+    pair_coeff 9 9 0.062 3.471
+    pair_coeff 10 10 0.062 3.471
+    pair_coeff 11 11 0.036 2.317  
+    pair_coeff 12 12 0.036 2.317  
+    pair_coeff 13 13 0.061 3.1181   # P-F bond J. Chem. Theory Comput. 2017, 13, 12, 6131–6145  
+    pair_coeff 14 14 0.200 3.74     # P-F bond J. Chem. Theory Comput. 2017, 13, 12, 6131–6145 
+    bond_coeff 1 268.0 1.529
+    bond_coeff 2 320.0 1.41
+    bond_coeff 3 340.0 1.09
+    bond_coeff 4 450.0 1.364
+    bond_coeff 5 481.0 1.34
+    bond_coeff 6 469.0 1.4
+    bond_coeff 7 367.0 1.08
+    bond_coeff 8 370.46  1.606 # P-F bond J. Chem. Theory Comput. 2017, 13, 12, 6131–6145 
+    angle_coeff 1 58.35 112.7
+    angle_coeff 2 50.0 109.5
+    angle_coeff 3 33.0 107.8
+    angle_coeff 4 35.0 109.5
+    angle_coeff 5 37.5 110.7
+    angle_coeff 6 60.0 109.5
+    angle_coeff 7 75.0 111.0
+    angle_coeff 8 50.0 116.0
+    angle_coeff 9 63.0 120.0
+    angle_coeff 10 70.0 120.0
+    angle_coeff 11 70.0 120.0
+    angle_coeff 12 35.0 120.0
+    angle_coeff 13 139.22  90.0 # F-P-F angle J. Chem. Theory Comput. 2017, 13, 12, 6131–6145 
+    dihedral_coeff 1 1.3 -0.05 0.2 0.0
+    dihedral_coeff 2 0.0 0.0 0.3 0.0
+    dihedral_coeff 3 0.0 0.0 0.468 0.0
+    dihedral_coeff 4 0.0 0.0 0.3 0.0
+    dihedral_coeff 5 0.65 -0.25 0.67 0.0
+    dihedral_coeff 6 0.0 0.0 0.76 0.0
+    dihedral_coeff 7 0.0 0.0 0.76 0.0
+    dihedral_coeff 8 0.0 3.0 0.0 0.0
+    dihedral_coeff 9 0.0 7.25 0.0 0.0
+    dihedral_coeff 10 0.0 7.25 0.0 0.0
+    dihedral_coeff 11 0.0 7.25 0.0 0.0
+    dihedral_coeff 12 0.0 7.25 0.0 0.0
+    dihedral_coeff 13 0.0 7.25 0.0 0.0
+    dihedral_coeff 14 0.0 7.25 0.0 0.0
+    dihedral_coeff 15 1.3 -0.05 0.2 0.0
+    dihedral_coeff 16 0.082 0.106 0.108 -0.143
+    improper_coeff 1 1.1 180.0

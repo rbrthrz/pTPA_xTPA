@@ -1,0 +1,172 @@
+<options>
+
+        <!-- INPUT/OUTPUT/SUPPORT +++++++++++++++++++++++++++++ -->
+
+        <stateserver>
+                <out>stateserver.out</out>          
+                <keys>emp xmp elist ilist</keys>    
+        </stateserver>
+
+        <tdump>
+                <md>md_check.pdb</md>               
+                <qm>qm_check.pdb</qm>               
+        </tdump>
+
+
+
+        <!-- ANALYSIS TOOLS +++++++++++++++++++++++++++++++++++ -->
+
+        <density>
+                <axis> 0.0 0.0 1.0 </axis>          
+                <resolution>0.5</resolution>        
+                <auto_bin>1</auto_bin>              
+                <min>-10</min>                      
+                <max>+10</max>                          
+
+                <output>density_profile.dat</output>        
+                <output_e>energy_profile.dat</output_e>     
+                <density_type>segments</density_type>       
+        </density>
+
+
+        <eanalyze>
+                <resolution_sites>0.01</resolution_sites> 
+                <resolution_pairs>0.01</resolution_pairs> 
+                <resolution_space>0.1</resolution_space>  
+        </eanalyze>
+
+
+        <ianalyze>
+                <resolution_logJ2>0.1</resolution_logJ2>  
+                <states>1</states>                        
+        </ianalyze>
+
+
+        <!-- SITE CALCULATORS +++++++++++++++++++++++++++++++++ -->
+
+        <einternal>
+                <energiesXML>system.xml</energiesXML>   
+        </einternal>
+
+
+        <emultipole>
+                <multipoles>system.xml</multipoles>             
+                <control>
+                        <induce>0</induce>                      
+                        <first>1</first>                        
+                        <last>537</last>                        
+                        <output>e_sites.dat</output>            
+                        <check>mp_check.pdb</check>             
+                </control>
+                <tholeparam>
+                        <cutoff>3.0</cutoff>                    
+                        <cutoff2>6.0</cutoff2>                  
+                        <expdamp>0.39</expdamp>                 
+                        <scaling>0.25 0.50 0.75</scaling>       
+                </tholeparam>
+                <convparam>
+                        <wSOR_N>0.55</wSOR_N>                   
+                        <wSOR_C>0.50</wSOR_C>                   
+                        <maxiter>512</maxiter>                  
+                        <tolerance>0.001</tolerance>            
+                </convparam>
+                <esp>
+                        <calcESP>0</calcESP>              
+                        <doSystem>0</doSystem>            
+                        <cube>xy.cube</cube>              
+                        <output>esp_gdma.cube</output>    
+                </esp>
+                <esf>
+                        <calcESF>0</calcESF>              
+                        <grid>esf_grid.xyz</grid>         
+                        <output>esf.dat</output>          
+                </esf>
+                <alphamol>
+                        <calcAlpha>0</calcAlpha>          
+                        <doSystem>0</doSystem>            
+                        <output>molpol.dat</output>      
+                </alphamol>
+        </emultipole>
+
+
+
+        <!-- PAIR CALCULATORS ++++++++++++++++++++++++++++++++++++ -->
+
+        <pairdump>
+        </pairdump>
+
+
+
+        <xmultipole>
+        <multipoles>system.xml</multipoles>             
+        <control>
+                  <job_file>job.in</job_file>           
+                  <emp_file>mps.in</emp_file>           
+                  <output>job.out</output>              
+                  <pdb_check>mp_check</pdb_check>       
+                  <write_chk>_chk</write_chk>           
+                  <format_chk>gaussian</format_chk>     
+                  <split_dpl>1</split_dpl>              
+                  <dpl_spacing>1e-2</dpl_spacing>           
+                </control>
+        <tholemodel>
+                  <induce>1</induce>
+                  <cutoff1>3.0</cutoff1>
+                  <cutoff2>3.0</cutoff2>
+                  <exp_damp>0.39</exp_damp>
+                  <scaling>0.25 0.50 0.75</scaling>
+                </tholemodel>
+        <convergence>
+                  <wSOR_N>0.35</wSOR_N>
+                  <wSOR_C>0.35</wSOR_C>
+                  <max_iter>512</max_iter>
+                  <tolerance>0.001</tolerance>
+                </convergence>
+    </xmultipole>
+
+
+
+        <neighborlist>
+                <constant>1.5</constant>                       
+        </neighborlist>
+
+
+        <izindo>
+                <orbitalsXML>system.xml</orbitalsXML>   
+        </izindo>
+
+
+        <eoutersphere>
+                <multipoles>system.xml</multipoles>             
+                <method>constant</method>                       
+                <lambdaconst>0.05</lambdaconst>                 
+        </eoutersphere>
+
+
+
+
+        <rates>
+                <temperature>300</temperature>          
+                <field>0 0 0</field>                    
+                <method>marcus</method>                 
+        </rates>
+        <!-- KMC CALCULATORS +++++++++++++++++++++++++++++++++++++ -->
+
+        <kmcmultiple>
+                <runtime>100000</runtime>
+                <outputtime>1E-10</outputtime>
+                <trajectoryfile>trajectory.csv</trajectoryfile>
+                <seed>1</seed>
+                <injection>XTA</injection>
+                <injectionmethod>random</injectionmethod>
+                <numberofcharges>1</numberofcharges>
+                <fieldX>0</fieldX>
+                <fieldY>0</fieldY>
+                <fieldZ>0</fieldZ>
+                <carriertype>hole</carriertype>
+                <temperature>300</temperature>
+                <explicitcoulomb>0</explicitcoulomb>
+                <rates>calculate</rates>
+        </kmcmultiple>
+
+</options>

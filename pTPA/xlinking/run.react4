@@ -1,0 +1,149 @@
+# ----------------- Init Section -----------------
+
+include "system.in.init"
+
+
+read_data "xtpa_npt300.data"  extra/bond/per/atom 50 extra/angle/per/atom 50 extra/dihedral/per/atom 50 extra/improper/per/atom 50 extra/special/per/atom 50 
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+# ----------------- Atom Definition Section -----------------
+
+group xtpa type 1:13
+
+# ----------------- Run Section -----------------
+
+create_atoms 12 random 25 3 NULL overlap 0.01
+create_atoms 13 random 25 3523691 NULL overlap 0.01
+set type 12 charge 1.0
+set type 13 charge -1.0
+
+group protons type 12
+group chlorides type 13
+
+
+# The first two below for protonation
+molecule mol1 rxn1_stp1_pre_ox.data_template
+molecule mol2 rxn1_stp1_post_ox.data_template
+
+# Attack protonated oxetane
+molecule mol3 rxn1_stp2_pre_ox.data_template
+molecule mol4 rxn1_stp2_post_ox.data_template
+molecule mol5 rxn1_stp2_post_ox2.data_template
+
+# Attack oxetane that has attacked another oxetane
+molecule mol6 rxn1_stp3_pre_ox_extended.data_template
+molecule mol7 rxn1_stp3_post_ox_extended.data_template
+molecule mol8 rxn1_stp3_post_ox_extended2.data_template
+
+
+dump mydmp all custom 1000 dump.eq.lammpstrj mol element xu yu zu
+dump_modify mydmp element  N C C H O C C C C C H H Cl pbc yes sort 1 sort id
+thermo 1
+
+minimize 1.0e-4 1.0e-6 100 1000
+
+undump mydmp
+reset_timestep 0
+
+
+# NVT Reaction
+
+timestep 1.0
+
+dump mydmp all custom 1000 dump.nvt_react.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H H Cl pbc yes sort 1 sort id
+
+dump mydmp2 all custom 1000 dump.nvt_react_wrapped.lammpstrj mol element x y z
+dump_modify mydmp2 element N C C H O C C C C C H H Cl pbc yes sort 1 sort id
+
+# rdf during reaction
+compute myrdf all rdf 150 1 1 1 10  # cutoff 6.0 
+fix rdfs all ave/time 1 100000 100000 c_myrdf[*] file rdfs.dat mode vector
+
+group ct type 10
+# diffusivity -> msd of oxetane atom
+compute mymsd ct msd com yes # -> subtract com movement of group 
+fix msds ct ave/time 1 100000 100000 c_mymsd file msd_ct.dat mode vector
+
+group nt type 1
+# diffusivity -> msd of nt atom
+compute mymsd2 nt msd com yes # -> subtract com movement of group
+fix msds2 nt ave/time 1 100000 100000 c_mymsd2 file msd_nt.dat mode vector
+
+compute   myvacf nt vacf
+fix             vacfs nt vector 1 c_myvacf[4]
+variable        diff equal dt*trap(f_vacfs)
+
+compute   myvacf2 ct vacf
+fix             vacfs2 ct vector 1 c_myvacf2[4]
+variable        diff2 equal dt*trap(f_vacfs2)
+
+compute   myvacf3 nt vacf
+fix vacfs3 nt ave/correlate 1 100000 100000  c_myvacf3[4] file acf_nt.dat
+
+compute   myvacf4 ct vacf
+fix vacfs4 ct ave/correlate 1 100000 100000 c_myvacf4[4] file acf_ct.dat
+
+
+#density
+thermo 1000
+thermo_style custom step temp epair emol etotal press density vol bonds angles dihedrals impropers v_diff v_diff2
+
+
+
+fix rxns all bond/react stabilization yes statted_grp .03 &
+  react rxn1_stp1 all 1 0.0 10.0 mol1 mol2 rxn1_stp1_ox.map & 
+  react rxn1_stp2 all 1 0.0 10.0 mol3 mol4 rxn1_stp2.map & 
+  react rxn1_stp2_2 all 1 0.0 10.0 mol3 mol5 rxn1_stp2_2.map &  
+  react rxn1_stp3 all 1 0.0 10.0 mol6 mol7 rxn1_stp3_extended.map &
+  react rxn1_stp3_2 all 1 0.0 10.0 mol6 mol8 rxn1_stp3_extended2.map  
+
+
+#fix 1 statted_grp_REACT nvt temp 300 300 100
+fix 1 statted_grp_REACT npt temp 1000.0 1000.0 100.0 iso 100.0 100.0 1000.0 drag 1.0
+run 2000000 every 1000 "write_data xlinked.*"
+
+write_data xlinked_tpa.data
+
+
+undump mydmp
+undump mydmp2
+unfix 1
+unfix rxns
+unfix vacfs4
+unfix vacfs3
+unfix vacfs2
+unfix vacfs
+unfix msds2
+unfix msds
+unfix rdfs
+
+
+
+write_data xlinked_tpa.data
+
+
+
+fix mynpt all npt temp 300.0 300.0 100.0 iso 1.0 1.0 1000.0 drag 1.0
+
+dump mydmp all custom 1000 dump.npt300.lammpstrj mol element xu yu zu
+dump_modify mydmp element N C C H O C C C C C H H Cl pbc yes sort 1 sort id
+
+#density
+thermo 1000
+thermo_style custom step temp epair emol etotal press density vol bonds angles dihedrals impropers
+
+
+run 100000
+write_data xtpa_xlinked_300.data
+unfix mynpt
+
+write_restart xtpa_xlinked_300restart
+
+
+
+
