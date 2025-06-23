@@ -10,9 +10,9 @@
 					<orbitals>QC_FILES/xtpa.orb</orbitals>
 					<basisset>INDO</basisset>
 					<torbital_h>140</torbital_h>
-					<U_cC_nN_h>0.0650</U_cC_nN_h>
+					<U_cC_nN_h>0.0000</U_cC_nN_h>
 					<U_nC_nN_h>0.0650</U_nC_nN_h>
-					<U_cN_cC_h>0.0000</U_cN_cC_h>
+					<U_cN_cC_h>0.0650</U_cN_cC_h>
 					<torbital_e>141</torbital_e>
 					<U_cC_nN_e>0.0000</U_cC_nN_e>
 					<U_nC_nN_e>0.0000</U_nC_nN_e>
